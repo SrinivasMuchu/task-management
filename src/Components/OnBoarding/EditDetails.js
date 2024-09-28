@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React,{useState} from 'react'
 
-function RegisterAndLogin({ type }) {
+function EditDetails({ type }) {
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-      
+        oldPassword:'',
         password: '',
         confirmPassword: '',
-        phoneNumber: '',
+        phonenumber: '',
         gender: '',
     });
 
@@ -21,7 +22,7 @@ function RegisterAndLogin({ type }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (type === 'register') {
+        if (type === 'edit') {
             // Handle registration logic
             console.log('Registering:', formData);
         } else {
@@ -29,43 +30,54 @@ function RegisterAndLogin({ type }) {
             console.log('Logging in:', formData);
         }
     };
-
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                {type === 'register' && (
-                    <div>
-                        <span>Name</span>
-                        <input
-                            type='text'
-                            name='name'
-                            value={formData.name}
-                            onChange={handleChange}
-                        />
-                    </div>
-                )}
-                {type === 'register' && (
-                    <div>
-                        <span>Phone number</span>
-                        <input
-                            type='tel'
-                            name='phoneNumber'
-                            value={formData.phoneNumber}
-                            onChange={handleChange}
-                        />
-                    </div>
-                )}
-                <div>
+                {type === 'edit' && <div>
+                    <span>Name</span>
+                    <input
+                        type='text'
+                        name='name'
+                        value={formData.name}
+                        onChange={handleChange}
+                    />
+                </div>}
+
+
+                {type === 'edit' && <div>
+                    <span>Phone number</span>
+                    <input
+                        type='tel'
+                        name='phonenumber'
+                        value={formData.phonenumber}
+                        onChange={handleChange}
+                    />
+                </div>}
+
+
+                {type === 'edit' && <div>
                     <span>Email</span>
                     <input
                         type='email'
                         name='email'
+                        disabled
                         value={formData.email}
                         onChange={handleChange}
                     />
-                </div>
+                </div>}
 
-                <div>
+
+                {type === 'pass' && <div>
+                    <span>Old password</span>
+                    <input
+                        type='password'
+                        name='oldPassword'
+                        value={formData.oldPassword}
+                        onChange={handleChange}
+                    />
+                </div>}
+
+                {type === 'pass' && <div>
                     <span>Password</span>
                     <input
                         type='password'
@@ -73,9 +85,9 @@ function RegisterAndLogin({ type }) {
                         value={formData.password}
                         onChange={handleChange}
                     />
-                </div>
+                </div>}
 
-                {type === 'register' && (
+                {type === 'pass' && (
                     <div>
                         <span>Confirm password</span>
                         <input
@@ -88,7 +100,7 @@ function RegisterAndLogin({ type }) {
                 )}
 
 
-                {type === 'register' && (
+                {type === 'edit' && (
                     <div>
                         <span>Gender</span>
                         <div>
@@ -128,23 +140,13 @@ function RegisterAndLogin({ type }) {
 
 
                 <div>
-                    <button type='submit'>{type === 'register' ? 'Signup' : 'Login'}</button>
+                    <button type='submit'>{type === 'edit' ? 'Update' : 'update password'}</button>
                 </div>
 
-                <div>
-                    {type === 'register' ? (
-                        <span>
-                            Already registered? Please <a href='/login'>Login</a>
-                        </span>
-                    ) : (
-                        <span>
-                            Don't have an account? <a href='/signup'>Signup</a>
-                        </span>
-                    )}
-                </div>
+                
             </form>
         </div>
-    );
+    )
 }
 
-export default RegisterAndLogin;
+export default EditDetails

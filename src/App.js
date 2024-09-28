@@ -13,7 +13,7 @@ function App() {
         <Route path="/signup" element={<RegisterAndLogin type='register'/>} />
         <Route path="/login" element={<RegisterAndLogin type='login'/>} />
         <Route path="/edit-details" element={<EditDetails type='edit'/>} />
-        <Route path="/password-change" element={<EditDetails type='pass'/>} />
+        <Route path="/change-password" element={<EditDetails type='pass'/>} />
         </Routes>
       </Router>
     </div>

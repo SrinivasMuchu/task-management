@@ -1,17 +1,56 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect } from 'react'
+import { BASE_URL } from '../../Constants';
+import Cookies from "js-cookie";
+import axios from 'axios'
 
 function EditDetails({ type }) {
 
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        oldPassword:'',
+        oldPassword: '',
         password: '',
         confirmPassword: '',
         phonenumber: '',
         gender: '',
     });
+    const [actionType ,setActionType] =useState('get_info')
+    useEffect(() => {
+        if(actionType === 'get_info'){
+            fetchMemberDetails()
+        }
+        
+    },[actionType])
+    const fetchMemberDetails = async() => {
+        try {
+            try {
+               
+                const headers = {
+                    "x-auth-token": Cookies.get("user_token"),
+                };
+                const response = await axios.post(
+                    BASE_URL + "/member/edit-details",{action:actionType},
+                    { headers: headers }
+                );
+                const required = response.data.data.details;
+                setFormData({
+                    name: required.full_name || '',
+                    email: required.email || '',
+                    phonenumber: required.phone_number || '',
+                    gender: required.gender || '',
+                    oldPassword: '',
+                    password: '',
+                    confirmPassword: '',
+                  });
+                console.log(required)
+               
+            } catch (error) {
+                console.error("Error fetching options data:", error);
+            }
+        } catch (error) {
 
+        }
+    }
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -143,7 +182,7 @@ function EditDetails({ type }) {
                     <button type='submit'>{type === 'edit' ? 'Update' : 'update password'}</button>
                 </div>
 
-                
+
             </form>
         </div>
     )

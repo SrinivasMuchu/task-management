@@ -6,6 +6,7 @@ function RegisterAndLogin({ type }) {
         email: '',
         password: '',
         confirmPassword: '',
+        phonenumber: '',
         gender: '',
     });
 
@@ -24,7 +25,7 @@ function RegisterAndLogin({ type }) {
             console.log('Registering:', formData);
         } else {
             // Handle login logic
-            console.log('Logging in:', formData.email, formData.password);
+            console.log('Logging in:', formData);
         }
     };
 
@@ -42,7 +43,17 @@ function RegisterAndLogin({ type }) {
                         />
                     </div>
                 )}
-
+                {type === 'register' && (
+                    <div>
+                        <span>Phone number</span>
+                        <input
+                            type='tel'
+                            name='phonenumber'
+                            value={formData.phonenumber}
+                            onChange={handleChange}
+                        />
+                    </div>
+                )}
                 <div>
                     <span>Email</span>
                     <input
@@ -74,6 +85,7 @@ function RegisterAndLogin({ type }) {
                         />
                     </div>
                 )}
+
 
                 {type === 'register' && (
                     <div>

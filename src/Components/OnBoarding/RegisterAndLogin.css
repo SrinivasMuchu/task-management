@@ -1,0 +1,88 @@
+.onboard-page{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.onboard-page-cont{
+    min-width: 30%;
+    border: 1px solid grey;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: purple;
+    min-height: 50vh;
+}
+.onboard-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 48px;
+    width: 48px;
+    border: 5px solid white;
+    position: absolute;
+    top: -30px;
+}
+.onboard-logo img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.onboard-form{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 50px;
+}
+
+.onboard-input-cont{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 5px;
+
+}
+.onboard-input-cont input{
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.onboard-radio-buttons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.onboard-radio-buttons label{
+    display: flex;
+    align-items: center;
+}
+.onboard-radio-buttons input{
+   width: 20px;
+   height: 20px;
+}
+
+
+
+
+
+
+
+@media screen and (max-width:900px){
+    .onboard-page-cont{
+        width: 80%;
+    }
+   
+   }

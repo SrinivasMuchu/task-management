@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function TaskList() {
+  const nav = useNavigate()
   // Example task data
   const tasks = [
     { id: 1, title: 'Complete React assignment', dueDate: '2024-10-01', status: 'Pending' },
@@ -9,10 +11,11 @@ function TaskList() {
   ];
 
   return (
-    <div>
+    <div style={{ marginTop: '100px',marginLeft:'200px' }}>
       <div>
         <span>My Tasks</span>
-        <button>Create Task</button>
+        <button onClick={()=>nav('/task-template')}>Create Template</button>
+        <button onClick={()=>nav('/task-form')}>Create Task</button>
       </div>
       <div>
         <table border="1" cellPadding="10" cellSpacing="0">

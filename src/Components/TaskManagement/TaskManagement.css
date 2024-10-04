@@ -1,0 +1,20 @@
+.template-page{
+    display: flex;
+    width: 100%;
+}
+.template-draging{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+.template-dropping{
+    width: 80%;
+    max-height: 100vh;
+    border: 2px dashed #ccc,
+}
+.template-dropping form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns of equal width */
+    gap: 16px;
+     /* Space between the grid items, adjust as needed */
+}

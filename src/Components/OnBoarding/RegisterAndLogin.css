@@ -76,13 +76,88 @@
 
 
 
+/* home page */
 
 
+.home-page{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    height: 60vh;
+   
+    
+}
+.home-page-left{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 10px;
+    width: 40%;
+}
+
+.home-page-right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 40%;
+}
+.home-page-right img{
+    width: 80%;
+    height: 200px;
+}
+.home-page-right-btn button{
+    padding: 5px;
+    border-radius: 4px;
+    border: none;
+    /* background: ; */
+}
+.home-page-left-text1{
+    font-size: 48px;
+    font-weight: 600;
+}
+.home-page-left-text2{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+/* created by */
 
 
+.created-by{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+}
+.created-by-bottom{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.created-by-bottom-line{
+    width: 2px;
+    height: 100px;
+    background: black;
+}
 @media screen and (max-width:900px){
     .onboard-page-cont{
         width: 80%;
     }
    
+   }
+
+
+   @media screen and (max-width:450px){
+    .home-page{
+        flex-direction: column;
+    }
+    .home-page-right,.home-page-left{
+        width: 100%;
+    }
    }

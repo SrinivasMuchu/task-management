@@ -10,6 +10,7 @@ import TaskForm from './Components/TaskManagement/TaskForm';
 import DetailsPageView from './Components/DetailsPage/DetailsPageView';
 import SideBar from './Components/LeftHoc/SideBar';
 import HOC from './Components/HOC/HOC';
+import HomeDesign from './Components/OnBoarding/HomeDesign';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <Route path="/login" element={<RegisterAndLogin type='login' />} />
           <Route path="/edit-details" element={<EditDetails type='edit' />} />
           <Route path="/change-password" element={<EditDetails type='pass' />} />
-          <Route
+          {/* <Route
             path="/"
             element={
 
@@ -30,10 +31,13 @@ function App() {
               </HOC>
 
             }
-          />
-          <Route path="/" element={<>
-            <HOC />
-          </>} />
+          /> */}
+          <Route path="/" element={
+            
+             <HomeDesign />
+          
+           
+          } />
           <Route path="/task-form" element={<HOC >
             <TaskForm />
           </HOC>} />

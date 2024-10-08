@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios";
-
+import { useNavigate } from 'react-router-dom';
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import { BASE_URL } from '../../Constants';
@@ -16,7 +16,7 @@ function EditDetails({ type }) {
         phoneNumber: '',
         gender: '',
     });
-
+    const nav = useNavigate()
     const toastStyle = {
         position: "top-right",
         autoClose: 2000,
@@ -101,125 +101,134 @@ function EditDetails({ type }) {
     };
     return (
 
-        <div>
-            <div>
-            
-            </div>
-            <div>
-                <form onSubmit={handleSubmit}>
-                    {type === 'edit' && <div>
-                        <span>Name</span>
-                        <input
-                            type='text'
-                            name='name'
-                            value={formData.name}
-                            onChange={handleChange}
-                        />
-                    </div>}
-
-
-                    {type === 'edit' && <div>
-                        <span>Phone number</span>
-                        <input
-                            type='tel'
-                            name='phoneNumber'
-                            value={formData.phoneNumber}
-                            onChange={handleChange}
-                        />
-                    </div>}
-
-
-                    {type === 'edit' && <div>
-                        <span>Email</span>
-                        <input
-                            type='email'
-                            name='email'
-                            disabled
-                            value={formData.email}
-                            onChange={handleChange}
-                        />
-                    </div>}
-
-
-                    {type === 'password' && <div>
-                        <span>Old password</span>
-                        <input
-                            type='password'
-                            name='oldPassword'
-                            value={formData.oldPassword}
-                            onChange={handleChange}
-                        />
-                    </div>}
-
-                    {type === 'password' && <div>
-                        <span>Password</span>
-                        <input
-                            type='password'
-                            name='password'
-                            value={formData.password}
-                            onChange={handleChange}
-                        />
-                    </div>}
-
-                    {type === 'password' && (
-                        <div>
-                            <span>Confirm password</span>
+        <div className='edit-page'>
+            <div className='edit-page-cont'>
+                <div className='edit-page-cont-title'>
+                    Edit profile details
+                </div>
+                <div className='edit-image-div'>
+                    <img src='https://thumbs.dreamstime.com/b/gold-diagonal-lines-pattern-3234563.jpg' alt='' />
+                </div>
+                <div className='edit-page-cont-form'>
+                    <form onSubmit={handleSubmit}>
+                        {type === 'edit' && <div className='edit-form-inputs'>
+                            <span>Name</span>
                             <input
-                                type='password'
-                                name='confirmPassword'
-                                value={formData.confirmPassword}
+                                type='text'
+                                name='name'
+                                value={formData.name}
                                 onChange={handleChange}
                             />
-                        </div>
-                    )}
+                        </div>}
 
 
-                    {type === 'edit' && (
-                        <div>
-                            <span>Gender</span>
-                            <div>
-                                <label>
-                                    <input
-                                        type='radio'
-                                        name='gender'
-                                        value='Male'
-                                        checked={formData.gender === 'Male'}
-                                        onChange={handleChange}
-                                    />
-                                    Male
-                                </label>
-                                <label>
-                                    <input
-                                        type='radio'
-                                        name='gender'
-                                        value='Female'
-                                        checked={formData.gender === 'Female'}
-                                        onChange={handleChange}
-                                    />
-                                    Female
-                                </label>
-                                <label>
-                                    <input
-                                        type='radio'
-                                        name='gender'
-                                        value='Other'
-                                        checked={formData.gender === 'Other'}
-                                        onChange={handleChange}
-                                    />
-                                    Other
-                                </label>
+                        {type === 'edit' && <div className='edit-form-inputs'>
+                            <span>Phone number</span>
+                            <input
+                                type='tel'
+                                name='phoneNumber'
+                                value={formData.phoneNumber}
+                                onChange={handleChange}
+                            />
+                        </div>}
+
+
+                        {type === 'edit' && <div className='edit-form-inputs'>
+                            <span>Email</span>
+                            <input
+                                type='email'
+                                name='email'
+                                disabled
+                                value={formData.email}
+                                onChange={handleChange}
+                            />
+                        </div>}
+
+
+                        {type === 'pass' && <div className='edit-form-inputs'>
+                            <span>Old password</span>
+                            <input
+                                type='password'
+                                name='oldPassword'
+                                value={formData.oldPassword}
+                                onChange={handleChange}
+                            />
+                        </div>}
+
+                        {type === 'pass' && <div className='edit-form-inputs'>
+                            <span>Password</span>
+                            <input
+                                type='password'
+                                name='password'
+                                value={formData.password}
+                                onChange={handleChange}
+                            />
+                        </div>}
+
+                        {type === 'pass' && (
+                            <div className='edit-form-inputs'>
+                                <span>Confirm password</span>
+                                <input
+                                    type='password'
+                                    name='confirmPassword'
+                                    value={formData.confirmPassword}
+                                    onChange={handleChange}
+                                />
                             </div>
-                        </div>
-                    )}
+                        )}
 
 
-                    <div>
-                        <button type='submit'>{type === 'edit' ? 'Update' : 'update password'}</button>
-                        <button onClick={() => memberDetails('get_info')}>get member details</button>
-                    </div>
+                        {type === 'edit' && (
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <span style={{ width: '100px' }}>Gender </span>
+                                <div >
+                                    <label>
+                                        <input
+                                            type='radio'
+                                            name='gender'
+                                            value='Male'
+                                            checked={formData.gender === 'Male'}
+                                            onChange={handleChange}
+                                        />
+                                        Male
+                                    </label>
+                                    <label>
+                                        <input
+                                            type='radio'
+                                            name='gender'
+                                            value='Female'
+                                            checked={formData.gender === 'Female'}
+                                            onChange={handleChange}
+                                        />
+                                        Female
+                                    </label>
+                                    <label>
+                                        <input
+                                            type='radio'
+                                            name='gender'
+                                            value='Other'
+                                            checked={formData.gender === 'Other'}
+                                            onChange={handleChange}
+                                        />
+                                        Other
+                                    </label>
+                                </div>
+                            </div>
+                        )}
 
 
-                </form>
+
+
+
+                    </form>
+
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'center' }}>
+                    <button onClick={handleSubmit}>{type === 'edit' ? 'Update' : 'update password'}</button>
+                    {type === 'edit' ? <button onClick={() => nav('/change-password')}>Change password</button> :
+                        <button onClick={() => nav('/edit-details')}>Edit details</button>}
+
+                </div>
             </div>
 
         </div>

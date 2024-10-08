@@ -243,8 +243,8 @@ function DetailsPageView() {
             </div>
           ) : (
             <div className='details-value-title'>
-              {fields.title}
-              <FaEdit className='edit-icon' onClick={() => handleEditClick('title')} />
+              <div style={{maxWidth:'95%'}}>{fields.title}</div>
+              <FaEdit className='edit-icon' style={{width:'20px',height:'20px'}} onClick={() => handleEditClick('title')} />
             </div>
           )}
         </div>
@@ -275,8 +275,24 @@ function DetailsPageView() {
                 <Select
                   value={selectedOption}
                   onChange={handleStatusChange}
-                  options={statusOptions}
-                  components={{ Option: customOption, SingleValue: customSingleValue }} // Use custom components
+                  options={statusOptions.map((member) => ({
+                    value: member.value, // Use full name as the value
+                    label: (
+                      <div
+                        className="member-option"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "10px",
+                        }}
+                      >
+                        <div style={{background:member.color,width:'10px',height:'10px',borderRadius:'50%'}}></div>
+                        <span>{member.label}</span>
+                      </div>
+                    ),
+                  }))}
+                  // options={statusOptions}
+                  // components={{ Option: customOption, SingleValue: customSingleValue }} // Use custom components
                   styles={customStyles}
                 />
               </div>
@@ -284,21 +300,23 @@ function DetailsPageView() {
 
 
             {/* Description Field */}
-            <div className='details-field'>
+            <div className='details-field' style={{display:'flex',flexDirection:'column',gap:'10px'}}>
               {isEditing.description ? (
                 <div>
                   <textarea
+                  style={{width:'80%'}}
                     name='description'
                     value={fields.description}
                     onChange={handleChange}
-                  />
+                  /><br/>
                   <button onClick={() => { setFields(fields); setIsEditing((prev) => ({ ...prev, description: false })); }}>Save</button>
                   <button onClick={() => handleCancel('description')}>Cancel</button>
                 </div>
               ) : (
-                <div className='details-value'>
-                  {fields.description}
-                  <FaEdit className='edit-icon' onClick={() => handleEditClick('description')} />
+                <div className='details-value' style={{display:'flex',alignItems:'center',gap:'10px',width:'75%'}}>
+                  {/* <textarea disabled value={fields.description} style={{display:'flex',alignItems:'center',gap:'10px',width:'90%'}}/> */}
+                  <div style={{display:'flex',gap:'10px',width:'100%',maxHeight:'15vh',overflowY:'scroll'}}>{fields.description}</div>
+                  <FaEdit className='edit-icon'  onClick={() => handleEditClick('description')} />
                 </div>
               )}
             </div>
@@ -308,6 +326,21 @@ function DetailsPageView() {
                 <CgAdd className='sub-tasks-add' />
               </div>
               <div className='sub-tasks-rows'>
+                <div className='sub-tasks-rows-cont'>
+                  <span>title</span>
+                  <span>due date</span>
+                  <span>priority</span>
+                </div>
+                <div className='sub-tasks-rows-cont'>
+                  <span>title</span>
+                  <span>due date</span>
+                  <span>priority</span>
+                </div>
+                <div className='sub-tasks-rows-cont'>
+                  <span>title</span>
+                  <span>due date</span>
+                  <span>priority</span>
+                </div>
                 <div className='sub-tasks-rows-cont'>
                   <span>title</span>
                   <span>due date</span>
@@ -335,7 +368,7 @@ function DetailsPageView() {
         <div className='details-field-comments'>
           Comments
           <div className='details-field-comments-cont'>
-            <span>dnfhjdgdfghdfghjdfghdfhgdhfgdhfgdnfhjdgdfghdfghjdfghdfhgdhfgdhfgdnfhjdgdfghdfghjdfghdfhgdhfgdhfgdnfhjdgdfghdfghjdfghdfhgdhfgdhfg dnfhjdgdfghdfghjdfghdfhgdhfgdhfg
+            <span>dnfhjdgdfghdfghjdfghdfhgdhdfghjdfghdfhgdhfgdhfg dnfhjdgdfghdfghjdfghdfhgdhfgdhfg
             </span>
             <MdDelete />
           </div>

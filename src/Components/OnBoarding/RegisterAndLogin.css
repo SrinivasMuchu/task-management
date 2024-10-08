@@ -1,11 +1,12 @@
-.onboard-page{
+.onboard-page {
     width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.onboard-page-cont{
+
+.onboard-page-cont {
     min-width: 30%;
     border: 1px solid grey;
     border-radius: 10px;
@@ -17,7 +18,8 @@
     background-color: purple;
     min-height: 50vh;
 }
-.onboard-logo{
+
+.onboard-logo {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,13 +30,14 @@
     position: absolute;
     top: -30px;
 }
-.onboard-logo img{
+
+.onboard-logo img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
 }
 
-.onboard-form{
+.onboard-form {
     width: 100%;
     box-sizing: border-box;
     padding: 5px;
@@ -44,7 +47,7 @@
     margin-top: 50px;
 }
 
-.onboard-input-cont{
+.onboard-input-cont {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -52,7 +55,8 @@
     gap: 5px;
 
 }
-.onboard-input-cont input{
+
+.onboard-input-cont input {
     width: 100%;
     height: 40px;
     border-radius: 4px;
@@ -60,18 +64,20 @@
     box-sizing: border-box;
 }
 
-.onboard-radio-buttons{
+.onboard-radio-buttons {
     display: flex;
     align-items: center;
     gap: 10px;
 }
-.onboard-radio-buttons label{
+
+.onboard-radio-buttons label {
     display: flex;
     align-items: center;
 }
-.onboard-radio-buttons input{
-   width: 20px;
-   height: 20px;
+
+.onboard-radio-buttons input {
+    width: 20px;
+    height: 20px;
 }
 
 
@@ -79,16 +85,17 @@
 /* home page */
 
 
-.home-page{
+.home-page {
     display: flex;
     width: 100%;
     justify-content: space-around;
     align-items: center;
     height: 60vh;
-   
-    
+
+
 }
-.home-page-left{
+
+.home-page-left {
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -96,28 +103,32 @@
     width: 40%;
 }
 
-.home-page-right{
+.home-page-right {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     width: 40%;
 }
-.home-page-right img{
+
+.home-page-right img {
     width: 80%;
     height: 200px;
 }
-.home-page-right-btn button{
+
+.home-page-right-btn button {
     padding: 5px;
     border-radius: 4px;
     border: none;
     /* background: ; */
 }
-.home-page-left-text1{
+
+.home-page-left-text1 {
     font-size: 48px;
     font-weight: 600;
 }
-.home-page-left-text2{
+
+.home-page-left-text2 {
     font-size: 18px;
     font-weight: 400;
 }
@@ -125,7 +136,7 @@
 /* created by */
 
 
-.created-by{
+.created-by {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -133,31 +144,104 @@
     gap: 20px;
 
 }
-.created-by-bottom{
+
+.created-by-bottom {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-around;
 
 }
-.created-by-bottom-line{
+
+.created-by-bottom-line {
     width: 2px;
     height: 100px;
     background: black;
 }
-@media screen and (max-width:900px){
-    .onboard-page-cont{
+
+@media screen and (max-width:900px) {
+    .onboard-page-cont {
         width: 80%;
     }
-   
-   }
+
+}
 
 
-   @media screen and (max-width:450px){
-    .home-page{
+@media screen and (max-width:450px) {
+    .home-page {
         flex-direction: column;
     }
-    .home-page-right,.home-page-left{
+
+    .home-page-right,
+    .home-page-left {
         width: 100%;
     }
-   }
+}
+
+
+
+
+
+
+/* edit-page */
+.edit-page-cont {
+    width: 50%;
+    height: 80vh;
+    box-sizing: border-box;
+    background: #212531;
+    background: linear-gradient(to right bottom, #0048ff 50%, #4a76f8 50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    gap: 20px;
+}
+.edit-image-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.edit-image-div img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.edit-page {
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.edit-page-cont-form{
+   width: 100%;
+    
+}
+.edit-page-cont-form form{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: space-between;
+}
+
+.edit-form-inputs{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.edit-form-inputs span{
+    width: 100px;
+    word-break: break-all;
+    text-align: right;
+}
+
+.edit-form-inputs input{
+    padding: 5px;
+    border-radius: 8px;
+    outline: none;
+    width: 200px;
+
+}

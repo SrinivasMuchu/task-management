@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css'; // Import the CSS for styling
+import 'react-calendar/dist/Calendar.css'; // Import the default Calendar CSS
+import './DetailsPage.css'; // Import the custom CSS file
 
 const DateContainer = ({ tasks, onUpdateDueDate }) => {
   const [date, setDate] = useState(new Date()); // State to manage the selected date
@@ -12,7 +13,7 @@ const DateContainer = ({ tasks, onUpdateDueDate }) => {
 
   // Handle task selection on the calendar
   const handleTaskSelect = (taskId) => {
-    const task = tasks.find(t => t.id === taskId);
+    const task = tasks.find((t) => t.id === taskId);
     if (task) {
       const newDueDate = prompt('Enter new due date (YYYY-MM-DD):', task.dueDate.toISOString().split('T')[0]);
       if (newDueDate) {
@@ -22,18 +23,18 @@ const DateContainer = ({ tasks, onUpdateDueDate }) => {
   };
 
   return (
-    <div style={{ maxWidth: '500px', margin: 'auto' }}>
+    <div className="calendar-container">
       <Calendar
         onChange={handleDateChange}
         value={date}
         tileContent={({ date, view }) => {
-          const tasksForDate = tasks.filter(task => new Date(task.dueDate).toDateString() === date.toDateString());
+          const tasksForDate = tasks.filter((task) => new Date(task.dueDate).toDateString() === date.toDateString());
           return (
             <div>
               {tasksForDate.length > 0 && (
                 <div>
-                  {tasksForDate.map(task => (
-                    <div key={task.id} onClick={() => handleTaskSelect(task.id)} style={{ cursor: 'pointer', color: 'blue' }}>
+                  {tasksForDate.map((task) => (
+                    <div key={task.id} onClick={() => handleTaskSelect(task.id)} className="task-tile">
                       {task.name}
                     </div>
                   ))}

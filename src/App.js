@@ -11,6 +11,7 @@ import DetailsPageView from './Components/DetailsPage/DetailsPageView';
 import SideBar from './Components/LeftHoc/SideBar';
 import HOC from './Components/HOC/HOC';
 import HomeDesign from './Components/OnBoarding/HomeDesign';
+import DetailsChangesPopUp from './Components/DetailsPage/DetailsChangesPopUp';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="/task-form" element={<HOC >
             <TaskForm />
           </HOC>} />
+          <Route path="/change-logs" element={<DetailsChangesPopUp/>} />
           <Route path="/task-details" element={<HOC >
             <DetailsPageView />
           </HOC>} />

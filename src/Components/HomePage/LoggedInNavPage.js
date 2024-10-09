@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './HomePage.css'
+import MemberSettings from './MemberSettings';
 
 function LoggedInNavPage() {
     const [openNotiofications, setOpenNotifications] = useState(false)
@@ -22,6 +23,7 @@ function LoggedInNavPage() {
                 <button>Login</button> */}
                 </div>
             </div>
+            <MemberSettings memberPhoto=''  memberName='sr' memberEmail='s@gmail.com' onClose={false}/>
             {openNotiofications && <Notification onclose={() => setOpenNotifications(!openNotiofications)} handleMakeZero={handleMakeZero} />}
         </>
 

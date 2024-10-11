@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { BASE_URL } from '../../Constants';
 
 function EditDetails({ type }) {
-
+    const [selectedSection, setSelectedSection] = useState('general');
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -16,6 +16,10 @@ function EditDetails({ type }) {
         phoneNumber: '',
         gender: '',
     });
+    const handleSectionClick = (section) => {
+        setSelectedSection(section);
+        // navigate(`/settings?tab=${section}`);
+    };
     const nav = useNavigate()
     const toastStyle = {
         position: "top-right",
@@ -101,135 +105,148 @@ function EditDetails({ type }) {
     };
     return (
 
-        <div className='edit-page'>
-            <div className='edit-page-cont'>
-                <div className='edit-page-cont-title'>
-                    Edit profile details
+        <div className="setting-container">
+
+            <div className="setting-heading">
+                <span>SETTINGS</span>
+            </div>
+            <div className='setting-navs'>
+                <div
+                    className={`generals${selectedSection === 'general' ? ' settingActive' : ''}`}
+                    onClick={() => handleSectionClick('general')}
+                    style={{
+                        cursor: 'pointer',
+                        boxShadow: selectedSection === 'general' ? '0px 3px 0px 0px #FF7A7A' : 'none',
+                        padding: '10px 16px',
+                        color: selectedSection === 'general' ? '#FF7A7A' : 'black'
+                    }}
+                >
+                    Profile
                 </div>
-                <div className='edit-image-div'>
-                    <img src='https://thumbs.dreamstime.com/b/gold-diagonal-lines-pattern-3234563.jpg' alt='' />
-                </div>
-                <div className='edit-page-cont-form'>
-                    <form onSubmit={handleSubmit}>
-                        {type === 'edit' && <div className='edit-form-inputs'>
-                            <span>Name</span>
-                            <input
-                                type='text'
-                                name='name'
-                                value={formData.name}
-                                onChange={handleChange}
-                            />
-                        </div>}
 
 
-                        {type === 'edit' && <div className='edit-form-inputs'>
-                            <span>Phone number</span>
-                            <input
-                                type='tel'
-                                name='phoneNumber'
-                                value={formData.phoneNumber}
-                                onChange={handleChange}
-                            />
-                        </div>}
-
-
-                        {type === 'edit' && <div className='edit-form-inputs'>
-                            <span>Email</span>
-                            <input
-                                type='email'
-                                name='email'
-                                disabled
-                                value={formData.email}
-                                onChange={handleChange}
-                            />
-                        </div>}
-
-
-                        {type === 'pass' && <div className='edit-form-inputs'>
-                            <span>Old password</span>
-                            <input
-                                type='password'
-                                name='oldPassword'
-                                value={formData.oldPassword}
-                                onChange={handleChange}
-                            />
-                        </div>}
-
-                        {type === 'pass' && <div className='edit-form-inputs'>
-                            <span>Password</span>
-                            <input
-                                type='password'
-                                name='password'
-                                value={formData.password}
-                                onChange={handleChange}
-                            />
-                        </div>}
-
-                        {type === 'pass' && (
-                            <div className='edit-form-inputs'>
-                                <span>Confirm password</span>
-                                <input
-                                    type='password'
-                                    name='confirmPassword'
-                                    value={formData.confirmPassword}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                        )}
-
-
-                        {type === 'edit' && (
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <span style={{ width: '100px' }}>Gender </span>
-                                <div >
-                                    <label>
-                                        <input
-                                            type='radio'
-                                            name='gender'
-                                            value='Male'
-                                            checked={formData.gender === 'Male'}
-                                            onChange={handleChange}
-                                        />
-                                        Male
-                                    </label>
-                                    <label>
-                                        <input
-                                            type='radio'
-                                            name='gender'
-                                            value='Female'
-                                            checked={formData.gender === 'Female'}
-                                            onChange={handleChange}
-                                        />
-                                        Female
-                                    </label>
-                                    <label>
-                                        <input
-                                            type='radio'
-                                            name='gender'
-                                            value='Other'
-                                            checked={formData.gender === 'Other'}
-                                            onChange={handleChange}
-                                        />
-                                        Other
-                                    </label>
-                                </div>
-                            </div>
-                        )}
-
-
-
-
-
-                    </form>
-
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'center' }}>
-                    <button onClick={handleSubmit}>{type === 'edit' ? 'Update' : 'update password'}</button>
-                    {type === 'edit' ? <button onClick={() => nav('/change-password')}>Change password</button> :
-                        <button onClick={() => nav('/edit-details')}>Edit details</button>}
-
+                <div
+                    className={`privacys${selectedSection === 'privacy' ? ' settingActive' : ''}`}
+                    onClick={() => handleSectionClick('privacy')}
+                    style={{
+                        cursor: 'pointer',
+                        boxShadow: selectedSection === 'privacy' ? '0px 3px 0px 0px #FF7A7A' : 'none',
+                        padding: '10px 16px',
+                        color: selectedSection === 'privacy' ? '#FF7A7A' : 'black'
+                    }}
+                >
+                    Change password
                 </div>
             </div>
+            {selectedSection === 'general' && <>
+                <div className="setting-img">
+                    <img
+                        src="https://cdn-icons-png.freepik.com/256/3984/3984678.png?ga=GA1.1.706441703.1694584519&semt=ais_hybrid"
+                        alt="Profile"
+                    />
+                </div>
+
+                <div className="setting-input">
+                    <div className="login-signup-input">
+                        <span>Full Name</span>
+                        <input
+                            type="text"
+                            name="fullName"
+                        // value={formData.fullName}
+                        // onChange={handleChange}
+                        />
+                    </div>
+                    <div className="login-signup-input">
+                        <span>Email</span>
+                        <input
+                            type="email"
+                            name="email"
+                        // value={formData.email}
+                        // onChange={handleChange}
+                        />
+                    </div>
+                    <div className="login-signup-input">
+                        <span>Phone Number</span>
+                        <input
+                            type="number"
+                            name="phoneNumber"
+                        // value={formData.phoneNumber}
+                        // onChange={handleChange}
+                        />
+                    </div>
+                    <div className="login-signup-input-radio">
+                        <span>Gender</span>
+                        <div className="login-signup-gender">
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="gender"
+                                    value="Male"
+                                // checked={formData.gender === "Male"}
+                                // onChange={handleChange}
+                                />
+                                Male
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="gender"
+                                // value="Female"
+                                // checked={formData.gender === "Female"}
+                                // onChange={handleChange}
+                                />
+                                Female
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="setting-save-btn">
+                    <button
+                    // onClick={handleSave}
+                    >Save</button>
+                </div>
+            </>}
+            {selectedSection === 'privacy' && <>
+              
+
+                <div className="setting-input">
+                    <div className="login-signup-input">
+                        <span>Old password</span>
+                        <input
+                            type="password"
+                           
+                        // value={formData.fullName}
+                        // onChange={handleChange}
+                        />
+                    </div>
+                    <div className="login-signup-input">
+                        <span>New password</span>
+                        <input
+                            type="password"
+                            
+                        // value={formData.email}
+                        // onChange={handleChange}
+                        />
+                    </div>
+                    <div className="login-signup-input">
+                        <span>Confirm new password</span>
+                        <input
+                            type="password"
+                           
+                        // value={formData.phoneNumber}
+                        // onChange={handleChange}
+                        />
+                    </div>
+                   
+                </div>
+
+                <div className="setting-save-btn">
+                    <button
+                    // onClick={handleSave}
+                    >Save</button>
+                </div>
+            </>}
 
         </div>
 
